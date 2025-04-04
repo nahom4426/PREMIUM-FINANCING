@@ -8,10 +8,10 @@
 	<DefaultPage placeholder="Search For a Member">
 		<template #more>
 			<div class="flex gap-2 justify-end items-center">
-				<Button type="primary" class="flex items-center gap-2">
+				<!-- <Button type="primary" class="flex items-center gap-2">
 					<i v-html="icons.plus" />
 					Add New Member
-				</Button>
+				</Button> -->
 				<!--<Button class="border border-priamry text-primary flex items-center gap-2">
 					<i v-html="icons.import" />
 					Import Members
@@ -20,7 +20,7 @@
 		</template>
    <Table
 	   :headers="{
-		    head: ['Fullname', 'CBHI ID', 'Enrollment Date', 'Date Of Birth', 'Address', 'Phone', 'Email', 'Gender', 'actions']
+		    head: ['Fullname', 'Date Of Birth', 'Address', 'Phone', 'Email', 'Gender', 'actions']
 		 }"
 	 />
 	</DefaultPage>

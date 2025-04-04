@@ -1,6 +1,6 @@
 <script setup>
 import { ModalParent } from "@customizer/modal-x";
-import { closeModal, getModal, openModal } from "@customizer/modal-x";
+import { closeModal } from "@customizer/modal-x";
 import BaseIcon from "@/components/base/BaseIcon.vue";
 import { mdiClose } from "@mdi/js";
 
@@ -14,38 +14,45 @@ function no() {
   closeModal(false);
 }
 </script>
+
 <template>
   <ModalParent
     v-slot="{ data }"
     :name="modalName"
-    class="flex justify-center items-center inset-0 bg-black/50 lg:conta p-2"
+    class="flex justify-center items-center inset-0 py-4  bg-black/50 p-4"
   >
-    <div
-      class="overflow-hidden relative p-4 flex flex-col gap-3 justify-center items-start w-80 rounded-md bg-white"
-    >
+    <div class="relative bg-white rounded-xl w-[400px] shadow-lg p-6 ">
+      <!-- Close Button -->
       <button
-        @click="(ev) => closeModal()"
-        class="absolute rounded-full bg-gray-100 text-gray-800 w-6 h-6 right-2 top-2"
+        @click="closeModal()"
+        class="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
       >
-        <BaseIcon :path="mdiClose" />
+        <BaseIcon :path="mdiClose" class="w-5 h-5" />
       </button>
-      <p class="text-lg font-bold text-left w-full">
-        {{ data?.title || "PAIRp" }}
+
+      <!-- Title -->
+      <p class="text-lg font-bold items-center text-gray-800 mb-4 py-2 border-b">
+        {{ data?.title || "Confirm Authorization" }}
       </p>
-      <p
-        class="capitalize text-left px-2 text-sm text-txt-clr border-l-4 border-orange-500"
-      >
-        {{ data?.message }}
+
+      <!-- Message -->
+      <p class="text-gray-600 text-sm leading-relaxed">
+        {{ data?.message || "Are you sure you want to authorize disbursement amount of ETB 74,000 to Lion Insurance?" }}
       </p>
-      <div class="flex justify-end w-full gap-2">
-        <button @click="no" class="text-sm px-4 py-1 rounded-md border">
-          No
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-4 mt-6 pb-2">
+        <button
+          @click="no"
+          class="bg-[#FC5A5A] text-white px-6 py-2  text-sm font-medium hover:bg-red-600"
+        >
+          Cancel
         </button>
         <button
           @click="yes"
-          class="text-sm px-4 py-1 bg-primary rounded-md text-white"
+          class="bg-[#2E3365] text-white px-6 py-2  text-sm font-medium hover:bg-[#1E224D]"
         >
-          Yes
+          Confirm
         </button>
       </div>
     </div>

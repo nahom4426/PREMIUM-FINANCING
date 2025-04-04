@@ -19,7 +19,7 @@ const props = defineProps({
   <button
     v-ripple
     :class="[$style?.[size], $style?.[type]]"
-    class="px-4 py-1 flex items-center rounded capitalize"
+    class="px-4 py-1 flex items-center justify-center rounded capitalize"
   >
     <slot v-if="!pending"></slot>
     <i class="m-auto" v-else v-html="icons.spinner" />

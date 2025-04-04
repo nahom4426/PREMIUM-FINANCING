@@ -9,7 +9,7 @@ import ModalParent from "@/components/new_form_builder/ModalParent.vue";
 import { closeModal } from "@customizer/modal-x";
 import { useApiRequest } from "@/composables/useApiRequest";
 import { createPatient, editPatient } from "../api/patientApi";
-import { usePatient } from "../store/patientStore";
+import { usePatient } from "../store/memberStore";
 import { computed, ref } from "vue";
 const props = defineProps({
   data: Object

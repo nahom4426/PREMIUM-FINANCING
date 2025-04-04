@@ -224,16 +224,23 @@ function phone(value, limit, _, message) {
 
 function alpha(value, limit, _, message) {
   let regex = /^[ a-zA-Z]+$/;
+
   if (limit instanceof Array) {
-    if (limit.length == 1) regex = new RegExp(`^[ a-zA-Z]{${limit[0]}}$`);
-    if (limit.length > 1)
-      regex = new RegExp(`^[ a-zA-Z]{${limit[0]},${limit[1]}}$`);
+    if (limit.length === 1) regex = new RegExp(`^[ a-zA-Z]{${limit[0]},}$`); // Min limit only
+    if (limit.length > 1) regex = new RegExp(`^[ a-zA-Z]{${limit[0]},${limit[1]}}$`); // Min & Max limit
   }
 
-  if (regex.test(value)) return [true];
+  if (!regex.test(value)) {
+    return [false, message || `Not a valid alphabet`];
+  }
 
-  return [false, message || `not a valid alphabet`];
+  if (value.length <= 2) {
+    return [false, message || `Input must be more than 2 letters`];
+  }
+
+  return [true];
 }
+
 
 function equalTo(value, name, formid, message) {
   let form = document.querySelector("#" + formid);
@@ -383,7 +390,13 @@ const file = {
 const textarea = common;
 const text = {
   ...common,
-  email,
+  email(value, _, __, message) {
+    if (!value) return [false, message || "Email is required"];
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+      return [true];
+    }
+    return [false, message || "Please enter a valid email address"];
+  },
   phone,
   oneof,
 };
@@ -420,3 +433,4 @@ export function getValidators() {
     date,
   };
 }
+

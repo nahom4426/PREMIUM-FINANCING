@@ -13,13 +13,11 @@ import LoginForm from "./components/LoginForm.vue";
     <div class="grid grid-cols-2 h-full">
       <div class="p-20 py-48 flex flex-col gap-4">
         <p class="font-degular text-[45px] leading-[45px] tracking-[4%] gap-4 text-white font-normal">
-  Lorem ipsum dolor sit, adipiscing elit.
-</p>
-<p class="font-degular text-[18px] leading-[28px] tracking-[0.2px] font-normal text-white">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel odio en urna ultrice. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel odio en urna ultrice. Lorem ipsum dolor sit, consectetur adipiscing elit. Ut vel odio en urna ultrice. Lorem ipsum dolor sit amet.
-</p>
-
-
+          Flexible Premium Financing for Your Vehicle Insurance
+        </p>
+        <p class="font-degular text-[18px] leading-[28px] tracking-[0.2px] font-normal text-white">
+          Make your car insurance more affordable with our premium financing solutions. Spread your insurance costs into manageable monthly payments while enjoying comprehensive coverage. Our platform makes it easy to manage your vehicle insurance premiums with flexible payment plans tailored to your needs.
+        </p>
       </div>
       <LoginForm />
     </div>
@@ -40,3 +38,4 @@ import LoginForm from "./components/LoginForm.vue";
 
 
 </style>
+

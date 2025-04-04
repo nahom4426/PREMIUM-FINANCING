@@ -67,13 +67,13 @@ function handleLogin({ values }) {
     <NewFormLayout v-slot="{ submit }" id="login-form" class="max-w-full">
       <div class="flex flex-col gap-6">
         <Input
-          label="Email*"
+          label="Email"
           name="email"
           validation="required|email"
           :attributes="{ placeholder: 'Email' }"
         />
         <InputPassword
-          label="Password*"
+          label="Password"
           name="password"
           validation="required"
           :attributes="{ placeholder: 'Password' }"

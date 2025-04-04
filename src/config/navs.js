@@ -9,7 +9,27 @@ export default [
       requiresAuth: true,
       permissions: [],
     },
-    type: "",
+    type: "Analytics",
+  },
+  {
+    path: "/",
+    icon: icons.report,
+    name: "Report and analytics",
+    meta: {
+      requiresAuth: true,
+      permissions: [],
+    },
+    type: "Analytics",
+  },
+  {
+    path: '/drafts',
+    icon: icons.leeds,
+    name: 'Leads (Drafts)',
+    meta: {
+      requiresAuth: true,
+      permissions: []
+    },
+    type: "Pages"
   },
   {
     path: '/clients',
@@ -18,72 +38,73 @@ export default [
     meta: {
       requiresAuth: true,
       permissions: []
-    }
+    },
+    type: "Pages"
   },
   {
-    path: '/transfer',
+    path: '/quatation',
     icon: icons.transfer,
-    name: 'Inspections',
+    name: 'Quotations',
     meta: {
       requiresAuth: true,
       permissions: []
-    }
+    },
+    type: "Pages"
   },
-  {
-    path: '/add_member',
-    icon: icons.add_member,
-    name: 'Add Member',
-    meta: {
-      requiresAuth: true,
-      permissions: []
-    }
-  },
- 
- 
   {
     path: '/payment',
     icon: icons.payment,
-    name: 'payment',
+    name: 'Financing',
     meta: {
       requiresAuth: true,
       permissions: []
-    }
+    },
+    type: "Pages",
+    isOpen: false, // Add this to control dropdown state
+    children: [
+      {
+        path: '/payment/deposit',
+        name: 'Deposit',
+        meta: {
+          requiresAuth: true,
+          permissions: []
+        }
+      },
+      {
+        path: '/payment/dispersement',
+        name: 'Dispersement',
+        meta: {
+          requiresAuth: true,
+          permissions: []
+        }
+      },
+      {
+        path: '/payment/premium',
+        name: 'Premium Payment',
+        meta: {
+          requiresAuth: true,
+          permissions: []
+        }
+      },
+      {
+        path: '/payment/issued-policies',
+        name: 'Issued Policies',
+        meta: {
+          requiresAuth: true,
+          permissions: []
+        }
+      }
+    ]
   },
   {
-    path: '/sub_cities',
-    icon: icons.city,
-    name: 'Sub Cities',
+    path: '/policies',
+    icon: icons.policies,
+    name: 'policies',
     meta: {
       requiresAuth: true,
       permissions: []
-    }
-  },
-  {
-    path: '/add_sub_city',
-    icon: icons.city,
-    name: 'Add Sub City',
-    meta: {
-      requiresAuth: true,
-      permissions: []
-    }
-  },
-  {
-    path: '/privileges',
-    name: 'Privileges',
-    icon: icons.privilege,
-    meta: {
-      requiresAuth: true,
-      permissions: []
-    }
-  },
-  {
-    path: '/roles',
-    name: 'Roles',
-    icon: icons.role,
-    meta: {
-      requiresAuth: true,
-      permissions: []
-    }
+    },
+    type: "Pages"
   },
   {
     path: '/Users',
@@ -92,6 +113,31 @@ export default [
     meta: {
       requiresAuth: true,
       permissions: []
-    }
+    },
+    type: "Settings"
+  },  
+  {
+    path: '/privileges',
+    name: 'Privileges',
+    icon: icons.privilege,
+    meta: {
+      requiresAuth: true,
+      permissions: []
+    },
+    type: "Settings"
+  },
+  {
+    path: '/roles',
+    name: 'Roles',
+    icon: icons.role,
+    meta: {
+      requiresAuth: true,
+      permissions: []
+    },
+    type: "Settings"
   }
 ];
+
+
+
+

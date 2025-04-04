@@ -1,5 +1,5 @@
 import MainLayout from '@/layouts/MainLayout.vue'
-import transferRoutes from './transfer.routes'
+import quatationRoutes from './quatation.routes'
 import paymentRoutes from './payment.routes'
 import subcitiesRoutes from './subcities.routes'
 import ketenaRoutes from './ketena.routes'
@@ -14,6 +14,8 @@ import Login from "@/pages/login/Login.vue";
 import subcityRoutes from "./subcity.routes";
 import Dashboard from '@/features/dashboard/pages/Dashboard.vue'
 import { useAuth } from '@/stores/auth'
+import DepositDetails from '@/features/financing/deposits/pages/DepositDetails.vue'
+import DispersementDetails from '@/features/financing/dispersement/pages/dispersementDetails.vue'
 
 const routes = [
   {
@@ -32,13 +34,15 @@ const routes = [
       ...usersRoutes,
       ...branchesRoutes,
       ...subcityRoutes,
-      ...transferRoutes,
+      ...quatationRoutes,
       ...paymentRoutes,
       ...subcitiesRoutes,
       ...ketenaRoutes
     ],
   },
   { path: "/login", name: "Login", component: Login },
+ 
+ 
 ];
 
 const router = createRouter({
@@ -105,3 +109,11 @@ router.beforeEach(async (to, from) => {
 });
 
 export default router;
+
+
+
+
+
+
+
+

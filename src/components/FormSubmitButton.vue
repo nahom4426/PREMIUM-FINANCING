@@ -1,6 +1,7 @@
 <script setup>
 import { inject, watch } from "vue";
 import Button from "./Button.vue";
+import icons from "@/utils/icons";
 
 defineProps({
   btnText: {
@@ -18,8 +19,9 @@ defineProps({
 const pendingRequest = inject("pending", false);
 </script>
 <template>
-  <Button :size="size" class="w-full h-8 text-sm bg-primary text-white rounded">
+  <Button :size="size" class="w-full h-8 text-sm bg-primary justify-center text-white rounded">
     <span v-if="!pending && !pendingRequest">{{ btnText }}</span>
-    <h-icon v-else name="fa-spinner" class="animate-spin" />
+    <i v-else v-html="icons.spinner" class="animate-spin" />
   </Button>
 </template>
+

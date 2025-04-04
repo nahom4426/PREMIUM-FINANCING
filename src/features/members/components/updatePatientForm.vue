@@ -4,7 +4,7 @@ import TableRowSkeleton from "@/components/TableRowSkeleton.vue";
 import { useApiRequest } from "@/composables/useApiRequest";
 import { ref, computed, nextTick } from "vue";
 import Table from "@/components/Table.vue";
-import { usePatient } from "@/features/members/store/patientStore";
+import { usemember } from "@/features/members/store/memberStore";
 import { toasted } from "@/utils/utils";
 import { confirmPayment } from "@/features/payment/api/paymentApi";
 import { closeModal } from "@customizer/modal-x";

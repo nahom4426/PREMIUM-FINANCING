@@ -87,7 +87,7 @@ import Last from '../components/last.vue';
   </div>
   <div class="p-6 flex justify-between bg-white">
   <ComplexTable />
-  <TaskList />
+  <!-- <TaskList /> -->
   <CalanderDashboard />
   </div>
   <Last />

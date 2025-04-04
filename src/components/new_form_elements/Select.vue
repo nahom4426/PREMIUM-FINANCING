@@ -30,12 +30,14 @@ const props = defineProps({
             opacity: attributes?.placeholder && !value ? .6 : 1
           }"
           :ref="setRef"
-          class="appearance-none flex-1  bg-[#eeeded2a] mt-3 mx-3  justify-center text-text-clr h-full text-sm"
+          class="appearance-none flex-1 bg-inherit mt-3 mx-3 justify-center text-text-clr h-full text-sm focus:outline-none"
         >
           <option
             selected
             value=""
             disabled
+            class="text-text-clr opacity-60 bg-inherit"
+            style="background-color: inherit !important;"
           >
             {{ attributes?.placeholder }}
           </option>
@@ -51,23 +53,29 @@ const props = defineProps({
           </template>
           <template v-else>
             <option
+              class="text-sm px-4"
               :selected="value == option.value"
-              :value="option.value"
               :key="option.value"
+              :value="option.value"
               v-for="option in options"
             >
               {{ option.label }}
             </option>
           </template>
         </select>
-        <div class="absolute pointer-events-none top-0 right-0 h-full">
-          <slot name="right">
-            <div class="h-full ml-auto w-8 px-1 flex items-center justify-center">
-              <i v-html="icons.down" />
-            </div>
-          </slot>
-        </div>
+        <slot name="right"></slot>
       </div>
     </InputLayout>
   </InputParent>
 </template>
+
+<style>
+
+
+select option {
+  background-color: white !important;
+}
+
+
+</style>
+

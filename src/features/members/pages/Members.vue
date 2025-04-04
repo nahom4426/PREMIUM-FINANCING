@@ -1,164 +1,189 @@
 <script setup>
- import DefaultPage from '@/components/DefaultPage.vue'
- import Table from '@/components/Table.vue'
- import Button from '@/components/Button.vue'
-  import icons from "@/utils/icons";
-import { ref } from 'vue';
+import DefaultPage from '@/components/DefaultPage.vue'
+import Table from '@/components/Table.vue'
+import Button from '@/components/Button.vue'
+import icons from "@/utils/icons";
+import { ref, onMounted } from 'vue';
 import Status_row from '../components/statusRow.vue';
+
+import { useMemberForm } from '../store/membersFormStore';
+import { removeUndefined } from '@/utils/utils';
+
+import { useMembers } from '../store/members';
+import { usePaginationcopy } from '@/composables/usePaginationcopy';
+import { getMembers } from '../api/membersApi';
+import { usePaginations } from '@/composables/usePaginations';
+const membersStore = useMembers();
+const searchKey = ref('');
+
+const pagination = usePaginations({
+  store: membersStore,
+  cb: (data, config) =>
+  getMembers(
+      removeUndefined({
+        ...data,
+        search: searchKey.value,
+      })
+    ),
+}); 
 const entries = ref([
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "2 days", // Custom value for inactivity
-    smsHistory: "2 SMS", // Custom value for SMS history
+    Vehicle: "2 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0912345678", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "11 days", // Custom value for inactivity
-    smsHistory: "5 SMS", // Custom value for SMS history
+    Vehicle: "11 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0923456789", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Checked",
-    inactiveFor: "6 days", // Custom value for inactivity
-    smsHistory: "3 SMS", // Custom value for SMS history
+    Vehicle: "6 days", // Custom value for inactivity
+    status: "Inactive", // Custom value foInactive history
     phoneNumber: "0934567890", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "3 days", // Custom value for inactivity
-    smsHistory: "1 SMS", // Custom value for SMS history
+    Vehicle: "3 days", // Custom value for inactivity
+    status: "Inactive", // Custom value foActive history
     phoneNumber: "0913456789", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "7 days", // Custom value for inactivity
-    smsHistory: "4 SMS", // Custom value for SMS history
+    Vehicle: "7 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0945678901", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Checked",
-    inactiveFor: "8 days", // Custom value for inactivity
-    smsHistory: "6 SMS", // Custom value for SMS history
+    Vehicle: "8 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0915678901", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "4 days", // Custom value for inactivity
-    smsHistory: "3 SMS", // Custom value for SMS history
+    Vehicle: "4 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0924678901", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "12 days", // Custom value for inactivity
-    smsHistory: "5 SMS", // Custom value for SMS history
+    Vehicle: "12 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0935789012", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "15 days", // Custom value for inactivity
-    smsHistory: "2 SMS", // Custom value for SMS history
+    Vehicle: "15 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0912345679", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "10 days", // Custom value for inactivity
-    smsHistory: "7 SMS", // Custom value for SMS history
+    Vehicle: "10 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0923456790", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "18 days", // Custom value for inactivity
-    smsHistory: "3 SMS", // Custom value for SMS history
+    Vehicle: "18 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0934567901", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "22 days", // Custom value for inactivity
-    smsHistory: "6 SMS", // Custom value for SMS history
+    Vehicle: "22 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0915678912", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Checked",
-    inactiveFor: "9 days", // Custom value for inactivity
-    smsHistory: "4 SMS", // Custom value for SMS history
+    Vehicle: "9 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0945678902", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "5 days", // Custom value for inactivity
-    smsHistory: "2 SMS", // Custom value for SMS history
+    Vehicle: "5 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0912345670", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Checked",
-    inactiveFor: "14 days", // Custom value for inactivity
-    smsHistory: "5 SMS", // Custom value for SMS history
+    Vehicle: "14 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0923456781", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "16 days", // Custom value for inactivity
-    smsHistory: "7 SMS", // Custom value for SMS history
+    Vehicle: "16 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0934567902", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "20 days", // Custom value for inactivity
-    smsHistory: "4 SMS", // Custom value for SMS history
+    Vehicle: "20 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0915678903", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "25 days", // Custom value for inactivity
-    smsHistory: "3 SMS", // Custom value for SMS history
+    Vehicle: "25 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0945678903", // Example Ethiopian phone number
   },
   {
     clientName: "Abebe Beso Bela",
-    RegisteredDate: "05-08-2024",
+    RegisteredDate: "03-262025",
     lastActivity: "Not Checked",
-    inactiveFor: "30 days", // Custom value for inactivity
-    smsHistory: "2 SMS", // Custom value for SMS history
+    Vehicle: "30 days", // Custom value for inactivity
+    status: "Active", // Custom value foActive history
     phoneNumber: "0912345675", // Example Ethiopian phone number
   },
 ]);
+
+onMounted(async () => {
+  await membersStore.fetchMembers();
+});
 
 </script>
 <template>
@@ -220,12 +245,11 @@ const entries = ref([
 		</template>
    <Table
 	   :headers="{
-		    head: ['Client Name', 'Registered  date', 'Last Activity', 'Inactive for', 'SMS History', 'Phone Number', 'actions'],
-			row: ['clientName', 'RegisteredDate', 'lastActivity', 'inactiveFor', 'smsHistory', 'phoneNumber'],
-			}"
-		:rowCom="Status_row" 
-		  :rows="entries"
-
+		    head: ['#', 'Client Name', 'Registered date', 'Vehicle Detail', 'Phone Number', 'Policy Status', 'actions'],
+			row: ['id', 'clientName', 'RegisteredDate', 'Vehicle', 'phoneNumber', 'status', 'actions']
+		}"
+	:rowCom="Status_row"
+		:rows="membersStore.members"
       :Fallback="TableRowSkeleton"
 	 >
 	
@@ -233,3 +257,5 @@ const entries = ref([
 	 
 	</DefaultPage>
 </template>
+
+
